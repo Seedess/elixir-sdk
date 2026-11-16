@@ -17,11 +17,18 @@ defmodule SeedessSdk.MixProject do
         },
         files: ~w(lib mix.exs README.md LICENSE)
       ],
-      deps: []
+      deps: deps()
     ]
   end
 
   def application do
     [extra_applications: [:inets, :ssl, :crypto]]
+  end
+
+  defp deps do
+    [
+      # Only for the runnable example server.
+      {:plug_cowboy, "~> 2.7", only: :dev}
+    ]
   end
 end
